@@ -5,14 +5,17 @@ let tool;
 let drawing = false;
 let lastX, lastY;
 let wheels = [];
+let terrain;
 
 function setup() {
   createCanvas(w, h);
   menu = new Menu(w, 50);
+  terrain = new Terrain(10, 100, w, h * .7);
 }
 
 function draw() {
   background(220);
+  terrain.render();
   menu.render();
 
   if (drawing) {
