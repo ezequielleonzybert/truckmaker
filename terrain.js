@@ -27,9 +27,6 @@ class Terrain {
             let x2 = this.points[i + 1].x;
             let y2 = this.points[i + 1].y;
 
-            // randomSeed(1)
-            // let curveStrength = random(15, 40);
-
             bezier(x1, y1, x1 + 50, y1, x2 - 50, y2, x2, y2);
         }
     }
