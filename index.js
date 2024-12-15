@@ -4,22 +4,28 @@ let menu;
 let tool;
 let drawing = false;
 let lastX, lastY;
-let wheels = [];
+let wheels;
 let terrain;
+let collisionmanager;
 
 function setup() {
   createCanvas(w, h);
   menu = new Menu(w, 50);
   terrain = new Terrain(10, 100, w, h * .7);
+  wheels = [];
+
+  colliders = { terrain, wheels };
+
+  collisionmanager = new CollisionManager(colliders);
 }
 
 function draw() {
   background(220);
   terrain.render();
-  menu.render();
 
   if (drawing) {
     if (tool == "wheel") {
+      fill(200);
       stroke('black');
       strokeWeight(1);
       circle(lastX, lastY, 2 * dist(lastX, lastY, mouseX, mouseY));
@@ -32,6 +38,8 @@ function draw() {
     w.render();
   }
 
+  collisionmanager.update();
+  menu.render();
 }
 
 function mousePressed() {
@@ -47,10 +55,6 @@ function mousePressed() {
       }
     }
   }
-}
-
-function mouseDragged() {
-
 }
 
 function mouseReleased() {

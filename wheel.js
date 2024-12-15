@@ -16,6 +16,7 @@ class Wheel {
     }
 
     render() {
+        fill(200)
         stroke(0);
         strokeWeight(1);
         translate(this.x, this.y);
