@@ -21,8 +21,8 @@ class CollisionManager {
 
                     // Reflejar la velocidad según la normal
                     const dot = w.velx * normalX + w.vely * normalY;
-                    w.velx -= 2 * dot * normalX * 0.9;
-                    w.vely -= 2 * dot * normalY * 0.9;
+                    w.velx -= 2 * dot * normalX * 0.99;
+                    w.vely -= 2 * dot * normalY * 0.99;
 
                     // Reubicar el círculo fuera del segmento
                     const overlapX = w.x - resultado.puntoCercano.x;
@@ -76,10 +76,3 @@ function circleSegmentCollision(cx, cy, radio, x1, y1, x2, y2) {
 
     return { colision: false };
 }
-
-// Ejemplo de uso
-const cx = 0, cy = 0, radio = 5;
-const x1 = -10, y1 = 0, x2 = 10, y2 = 5;
-
-const colision = circleSegmentCollision(cx, cy, radio, x1, y1, x2, y2);
-console.log("¿Hay colisión?", colision);
